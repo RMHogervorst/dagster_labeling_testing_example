@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = "a dagster project"
+authors = ["Roel M. Hogervorst <hogervorst.rm@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode=false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+dagster = "^1.9.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+ruff = "^0.7.3"
+dagster-webserver = "^1.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.dagster]
+module_name = "project.definitions"  ## name of project's Python module and where to find the definitions
+code_location_name = "example project"  ## optional, name of code location to display in the Dagster UI
+
