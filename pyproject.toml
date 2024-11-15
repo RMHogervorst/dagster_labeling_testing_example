@@ -11,10 +11,12 @@ package-mode=false
 python = ">=3.12,<3.13"
 dagster = "^1.9.1"
 
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
 ruff = "^0.7.3"
 dagster-webserver = "^1.9.1"
+black = "^24.10.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -22,5 +24,5 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.dagster]
 module_name = "project.definitions"  ## name of project's Python module and where to find the definitions
-code_location_name = "example project"  ## optional, name of code location to display in the Dagster UI
+code_location_name = "labeling example project"  ## optional, name of code location to display in the Dagster UI
 
