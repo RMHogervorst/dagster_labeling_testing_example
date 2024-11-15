@@ -28,19 +28,19 @@ cleaned_clicks_data => train_classifier_hot_new_item
 
 Finally there is an external asset that represents the hot_new_item classifier that is currently in production.
 
-## What is visible
+### What is visible
 
 Here are the currently visible ways to differentiate assets in this project:
 
-- based on asset groups: bundeling assets that belong together
+- based on `asset groups`: bundeling assets that belong together
 - based on `kind`, a special type of metadata that is represented with an icon: dashboard, silver, gold, sql, iceberg, scikitlearn, python
-- based on asset owners
-- based on tag
+- based on asset `owners`
+- based on `tag`
 
 There is more metadata available:
 
-- All assets have a description
-- All assets have metadata
+- All assets have a `description`
+- All assets have `metadata`
 
 In the 'global asset lineage' overview you can see all assets and their lineage, and you can also filter on `kind`, `tag`, `owner`, `asset group`.
 
@@ -66,13 +66,21 @@ The asset catalog shows all the details for one asset; `asset group`, `kind`,`ta
 
 ![](img/Screenshot%20from%202024-11-15%2019-51-04.png)
 
-This makes it easy to see what assets are available, who is responsible and what kind of asset it is.
+### Labeling makes your life easier
+The tags, metadata, kinds, description etc. make it easy to see what assets are available, who is responsible and what kind of asset something is.
 
+You also know who to contact when something breaks.
 
-## Further reading about tags, kinds and metadata
+### Further reading about tags, kinds and metadata
 
-Some useful links
+Some useful links:
+
 - If you want to select a kind-tag that turns into an image here are [all current kind tags](https://sourcegraph.com/github.com/dagster-io/dagster/-/blob/js_modules/dagster-ui/packages/ui-core/src/graph/OpTags.tsx)
 - more details about [asset-metadata](https://docs.dagster.io/concepts/metadata-tags/asset-metadata)
 - all predefined dagster [standard metadata](https://docs.dagster.io/concepts/metadata-tags/asset-metadata#standard-asset-metadata-entries)
 
+
+## Testing
+
+In the project_test folder I defined a test that checks all assets for 
+a few basics; does it have a description?

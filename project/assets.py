@@ -47,9 +47,6 @@ def split_clicks_data():
     return
 
 
-# TODO add staging layer
-
-
 @asset(
     metadata={"dataset": "clicks", "priority": "high"},
     tags={"domain": "marketing", "pii": "false"},
@@ -58,6 +55,7 @@ def split_clicks_data():
     deps=["split_clicks_data"],
 )
 def cleaned_clicks_data():
+    """Staging layer for marketing clicks dataset."""
     pass
 
 
