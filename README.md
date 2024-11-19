@@ -83,4 +83,4 @@ Some useful links:
 ## Testing
 
 In the project_test folder I defined a test that checks all assets for 
-a few basics; does it have a description?
+a few basics; does it have a description? And some more specific tests. 

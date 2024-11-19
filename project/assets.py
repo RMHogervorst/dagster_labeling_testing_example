@@ -1,4 +1,4 @@
-from dagster import asset, Out
+from dagster import asset, Out, MetadataValue
 
 
 @asset(
@@ -6,6 +6,8 @@ from dagster import asset, Out
         "dataset": "clicks",
         "dagster/uri": "s3://my_bucket/my_object",
         "dagster/table_name": "src.clicks_hourly",
+        "Status": "Product",
+        "docs": "github.com/example/project/readme",
     },
     tags={"domain": "marketing", "pii": "true"},
     owners=["team:Data-Engineering"],
@@ -31,7 +33,12 @@ def read_clicks_data():
 
 
 @asset(
-    metadata={"dataset": "clicks", "dagster/table_name": "src.clicks_hourly_region"},
+    metadata={
+        "dataset": "clicks",
+        "dagster/table_name": "src.clicks_hourly_region",
+        "Status": "Product",
+        "docs": "github.com/example/project/readme",
+    },
     tags={"domain": "marketing", "pii": "false"},
     owners=["team:Data-Engineering"],
     kinds={"sql", "iceberg", "bronze"},
@@ -48,7 +55,12 @@ def split_clicks_data():
 
 
 @asset(
-    metadata={"dataset": "clicks", "priority": "high"},
+    metadata={
+        "dataset": "clicks",
+        "priority": "high",
+        "Status": "Product",
+        "docs": "github.com/example/project/readme",
+    },
     tags={"domain": "marketing", "pii": "false"},
     owners=["team:Data-Engineering"],
     kinds={"iceberg", "silver"},
@@ -60,7 +72,12 @@ def cleaned_clicks_data():
 
 
 @asset(
-    metadata={"dataset": "clicks", "priority": "medium"},
+    metadata={
+        "dataset": "clicks",
+        "priority": "medium",
+        "Status": "Prototype",
+        "dashboard_url": MetadataValue.url("https://internallink.org/dashboardurl"),
+    },
     tags={"domain": "marketing", "pii": "false"},
     owners=["team:Marketing"],
     kinds={"dashboard", "gold"},
@@ -79,7 +96,11 @@ def dashboard_clicks_north():
 
 
 @asset(
-    metadata={"dataset": "clicks", "priority": "low"},
+    metadata={
+        "dataset": "clicks",
+        "priority": "low",
+        "dashboard_url": MetadataValue.url("https://internallink.org/dashboardurl"),
+    },
     tags={"domain": "marketing", "pii": "false"},
     owners=["team:Marketing"],
     kinds={"dashboard", "gold"},

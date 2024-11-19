@@ -1,16 +1,10 @@
 from dagster import asset, AssetSpec, AssetKey, sensor, SensorResult, AssetObservation
 
-# TODO: an experimental data science thing.
-# read from same raw layer or staging
-# do train model
-# save model
-# observe model in production? src asset
-
 GROUP = "datascience"
 
 
 @asset(
-    metadata={"priority": "low", "ds/type": "classification"},
+    metadata={"priority": "low", "ds/type": "classification", "Status": "PoC"},
     tags={"domain": "marketing", "pii": "false"},
     owners=["team:Data-Science"],
     kinds={"s3", "python", "scikitlearn"},
@@ -41,7 +35,7 @@ hot_new_item_model_prod = AssetSpec(
     But we could make the sensor not only emit asset observations
     but even asset materializations when the model version changes.
     This would allow us to trigger a pipeline downstream""",
-    metadata={"ds/type": "classification"},
+    metadata={"ds/type": "classification", "Status": "PoC"},
     kinds={"scikitlearn", "mlflow"},
 )
 
@@ -50,7 +44,7 @@ hot_new_item_model_prod = AssetSpec(
 def hot_new_model_prod_sensor():
     # observes the model and returns metrics
     # asset observations
-    metadata = {"predictions/last_60s": 10, "model_version":"23dj84c"}
+    metadata = {"predictions/last_60s": 10, "model_version": "23dj84c"}
     return SensorResult(
         asset_events=[
             AssetObservation(asset_key="hot_new_item_model", metadata=metadata)
