@@ -25,4 +25,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.dagster]
 module_name = "project.definitions"  ## name of project's Python module and where to find the definitions
 code_location_name = "labeling example project"  ## optional, name of code location to display in the Dagster UI
-
+dynamic = ["executable_path"]
